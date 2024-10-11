@@ -1,8 +1,13 @@
 import winsound
 import time
+from customtkinter import *
+
+
+app = CTk()
+app.geometry('700x600')
 
 unit = 100   
-frequency = 600  
+frequency = 400 
 
 morse_code_dict = {
     'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',   'E': '.',  
@@ -13,7 +18,7 @@ morse_code_dict = {
     'Z': '--..',
     
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',  
-    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
+    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
 
     '.': '.-.-.-',  ',': '--..--',  '?': '..--..',  "'": '.----.', 
     '!': '-.-.--',  '/': '-..-.',   '(': '-.--.',   ')': '-.--.-', 
@@ -62,6 +67,5 @@ def audio(morse_code):
 
 
 while True:
-    False
     translation = translate_text()
     audio(translation)
