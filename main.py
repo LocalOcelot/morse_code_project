@@ -1,13 +1,11 @@
 import winsound
 import time
-from customtkinter import *
 
 
-app = CTk()
-app.geometry('700x600')
 
 unit = 100   
-frequency = 400 
+frequency = 480 
+
 
 morse_code_dict = {
     'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',   'E': '.',  
@@ -38,9 +36,13 @@ def space():
     time.sleep(1)
 
 def translate_text():
-    user_input = input('Enter something you would like to be translated to morse code: ')
+    user_input = input('What would you like to translate from English to Morse code? \n')
     user_input = user_input.upper()
     morse_code = []
+    if not user_input:
+        print('Please enter some text')
+        
+    
 
     for char in user_input:
         if char in morse_code_dict:
@@ -66,6 +68,14 @@ def audio(morse_code):
             time.sleep(3 * unit / 1000)  
 
 
-while True:
+on_switch = True
+
+while on_switch == True:
     translation = translate_text()
     audio(translation)
+    wants_to_continue = input('Would you like to translate another? Y/N')
+    wants_to_continue = wants_to_continue.upper()
+    if wants_to_continue == 'N':
+        on_switch = False
+    
+
